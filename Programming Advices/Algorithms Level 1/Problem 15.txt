@@ -1,0 +1,38 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+void ReadRectanlgeInfo(float& h, float& b)
+{
+    cout << "Enter Length: "; cin >> b; 
+    cout << "Enter height: "; cin >> h; 
+
+    while (h <= 0 || b <= 0){ 
+        cout << "Sorry Info should be greater than zero" << endl;
+        cout << "Enter Length: "; cin >> b;
+        cout << "Enter height: "; cin >> h; 
+    } 
+
+}
+
+float calAreaOfRectangle(float h, float b)
+{
+    return float(h * b); 
+
+}
+
+void PrintArea(float h , float b)
+{
+    cout << "The Area is: " << calAreaOfRectangle(h, b);
+
+}
+
+int main()
+{
+    float h, b;
+
+    ReadRectanlgeInfo(h, b);
+    PrintArea(h, b); 
+  
+    return 0;
+}

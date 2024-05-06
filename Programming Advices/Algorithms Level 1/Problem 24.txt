@@ -1,0 +1,83 @@
+Using Bool 
+
+#include <iostream>
+#include <string>
+#include <cmath>
+using namespace std;
+
+
+
+int ReadNum()  
+{
+    int Age;
+    cout << "How old are you?" << endl;
+    cin >> Age; 
+
+    return Age;  
+}
+
+    
+bool ValidateNumberRange(int Number, int from, int to)
+{
+    return (Number >= from && Number <= to); 
+}
+
+void PrintResult(int Age)
+{
+    if (ValidateNumberRange(Age, 18, 45))
+        cout << "Vaild Age";
+    else
+        cout << "Invaild Age"; 
+
+}
+
+int main()
+{
+    PrintResult(ReadNum()); 
+  
+    return 0;
+}
+
+*************************************************************************************
+Using Enum 
+
+#include <iostream>
+#include <string>
+#include <cmath>
+using namespace std;
+
+enum enVaildaion { VaildAge = 1 , InvaildAge = 2}; 
+
+int ReadAge() 
+{
+    int Age;
+    cout << "How old are you?" << endl;
+    cin >> Age; 
+
+    return Age;  
+}
+
+enVaildaion CheckAge(int Age)    
+{ 
+    if (Age >= 18 && Age <= 45)
+        return enVaildaion::VaildAge;
+    else
+        return enVaildaion::InvaildAge;  
+
+}; 
+
+void PrintResult(enVaildaion reuslt) 
+{
+    if (reuslt == enVaildaion::VaildAge) 
+        cout << "Vaild Age";
+    else  
+        cout << "Invaild Age";
+
+}
+
+int main()
+{
+    PrintResult(CheckAge(ReadAge())); 
+  
+    return 0;
+}

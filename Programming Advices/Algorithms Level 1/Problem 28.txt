@@ -1,0 +1,53 @@
+#include <iostream>
+
+using namespace std;
+
+enum enOddorEven {Odd = 1 , Even = 2}; 
+
+enOddorEven CheckOddorEven(int number)
+{
+    if (number % 2 == 0)
+        return enOddorEven::Even;
+    else
+        return enOddorEven::Odd; 
+
+
+}
+
+int ReadInput(int &n)
+{
+    cout << "Enter a number you want to stop adding up at: "; cin >> n;
+
+    while (n <= 1)
+    {
+        cout << "Sorry,Enter a number greater than 1: "; cin >> n;
+    }
+     return n ; 
+}
+
+int Sum(int n)
+{
+    int sum = 0;
+    for (int i = 1; i <= n; i ++) 
+    {
+        if (CheckOddorEven(i) == enOddorEven::Odd) {
+            sum += i;
+        }
+            
+    }
+    return sum;
+}
+
+void PrintSum(int Sum)
+{
+    cout << "The Sum is: " << Sum << endl;  
+}
+
+int main()
+{
+    int number;
+     
+    PrintSum(Sum(ReadInput(number)));
+     
+    return 0;
+}
