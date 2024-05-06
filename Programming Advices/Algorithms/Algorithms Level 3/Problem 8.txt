@@ -1,0 +1,75 @@
+#include <iostream>
+#include <cstdlib>
+#include <iomanip>
+
+using namespace std;
+
+int RandomNumber(int From, int To) 
+{
+	//Function to generate a random number
+
+	int randNum = rand() % (To - From + 1) + From;
+	return randNum;
+} 
+
+void FillMatirxwithRandom(int arr[3][3], short Rows, short Cols)
+{
+	for (short i = 0; i < Rows; i++)
+	{
+		for (short j = 0; j < Cols; j++)
+		{
+			arr[i][j] = RandomNumber(1, 10);
+		}
+	}
+
+}
+
+void MultiplayMatrices(int resultarr[3][3], int arr1[3][3], int arr2[3][3], short Rows, short Cols)
+{
+	for (short i = 0; i < Rows; i++) 
+	{
+		for (short j = 0; j < Cols; j++)  
+		{
+			resultarr[i][j] = arr1[i][j] * arr2[i][j]; 
+		}
+	}
+
+}
+ 
+void PrintMatrix(int arr[3][3], short Rows, short Cols)
+{
+	for (short i = 0; i < Rows; i++) 
+	{
+		for (short j = 0; j < Cols; j++) 
+		{
+			//cout << arr[i][j] << "  "; 
+			printf("%0*d  ", 2, arr[i][j]); 
+		}
+		cout << endl;    
+	}
+}
+
+
+int main()
+{
+
+	srand((unsigned)time(NULL));
+
+	int arr1[3][3], arr2[3][3], resultarr[3][3]; 
+
+	FillMatirxwithRandom(arr1, 3, 3);  
+	FillMatirxwithRandom(arr2, 3, 3); 
+
+	cout << "Matrix 1:" << endl;  
+	PrintMatrix(arr1, 3, 3); 
+
+	cout << "\nMatrix 2:" << endl;
+	PrintMatrix(arr2, 3, 3); 
+
+	MultiplayMatrices(resultarr, arr1, arr2, 3, 3); 
+
+	cout << "\nResults:" << endl;
+	PrintMatrix(resultarr, 3, 3);     
+
+    return 0;
+}

@@ -1,0 +1,29 @@
+#include <iostream>
+#include <cstdlib>
+#include <iomanip>
+
+using namespace std;
+
+void FibboicaUsingRecruion(short num, int perv1, int perv2)
+{
+	int FibboicNumber = 0;
+	if (num > 0)
+	{
+		FibboicNumber = perv1 + perv2; 
+		perv2 = perv1;
+		perv1 = FibboicNumber;
+		cout << FibboicNumber << "  ";  
+		FibboicaUsingRecruion(num - 1, perv1, perv2);
+	}
+
+
+}
+
+
+int main()
+{
+	
+	FibboicaUsingRecruion(2,0,1);
+
+	return 0; 
+}

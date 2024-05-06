@@ -1,0 +1,84 @@
+#include <iostream>
+#include <cstdlib>
+#include <iomanip>
+
+using namespace std;
+
+int RandomNumber(int From, int To) 
+{
+	//Function to generate a random number
+
+	int randNum = rand() % (To - From + 1) + From;
+	return randNum;
+} 
+
+void FillMatirxwithRandom(int arr[3][3], short Rows, short Cols)
+{
+	for (short i = 0; i < Rows; i++)
+	{
+		for (short j = 0; j < Cols; j++)
+		{
+			arr[i][j] = RandomNumber(0, 1);
+		}
+	}
+
+}
+
+void PrintMatrix(int arr[3][3], short Rows, short Cols)
+{
+	for (short i = 0; i < Rows; i++) 
+	{
+		for (short j = 0; j < Cols; j++) 
+		{
+			//cout << arr[i][j] << "  "; 
+			printf("%d  ", arr[i][j]); 
+		}
+		cout << endl;    
+	}
+}
+
+bool isScaalarMatrix(int arr1[3][3], short Rows, short Cols) 
+{ 
+	short num = arr1[0][0];   
+	
+		for (short i = 0; i < Rows; i++)   
+		{
+			for (short j = 0; j < Cols; j++) 
+			{
+				if (i == j && arr1[i][j] != num)  
+				{
+					return 0; 
+				}
+				else if (i != j && arr1[i][j] != 0)
+				{
+					return 0; 
+				}
+			   
+			}
+		}
+		return 1; 
+
+}
+
+int main()
+{
+
+	srand((unsigned)time(NULL));
+
+	int arr1[3][3] = { {5,0,0}, {0,5,0}, {0,0,5} };
+
+	//FillMatirxwithRandom(arr1, 3, 3);  
+	
+
+	cout << "Matrix 1:" << endl;  
+	PrintMatrix(arr1, 3, 3); 
+
+
+	string result = ""; 
+	result = (isScaalarMatrix(arr1, 3, 3)) ? "YES: Matrix is Scalar" : "No: Matrix is Not Scalar";   
+	  
+	cout << "\n" << result << endl;  
+	
+
+	return 0; 
+}

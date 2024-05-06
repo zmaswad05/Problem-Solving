@@ -1,0 +1,117 @@
+#include <iostream>
+#include <string> 
+#include <iomanip>
+
+using namespace std;
+
+
+/*string ReadString()
+{
+	string S1;
+	cout << "Please enter your String?: " << endl;
+	getline(cin, S1);
+	return S1;
+} */          
+ 
+string TrimLeft(string S1) 
+{
+	short i = 0; 
+
+	while (S1[i] == ' ')  
+	{   
+		i++;  
+	}
+	
+	 S1.erase(0, i);        
+
+	return S1;   
+}
+
+string TrimRight(string S1)
+{
+	int i = (S1.length()-1);   
+	short count = 0; 
+  
+	while (S1[S1.length() - i] == ' ')  
+	{
+		count++; 
+		i--; 
+	}  
+	S1.erase(i + 1 , count);    
+	
+	return S1;  
+}
+
+string Trim(string S1)
+{
+	S1 = TrimLeft(S1); 
+	S1 = TrimRight(S1); 
+	return S1;  
+}
+
+int main()
+{
+ 
+	string S1 = "     Zuheir      ";
+
+
+	cout << left << setw(7) << "\nString = " << S1 << endl; 
+	cout << left << setw(7) << "\nTrim Left  = " << TrimLeft(S1) << endl; 
+	cout << left << setw(7) << "Trim Rigth = " << TrimRight(S1) << endl;
+	cout << left << setw(7) << "Trim       = " << Trim(S1) << endl;  
+
+	return 0; 
+}
+-------------------------------------------------------------------------
+Teacher solution: 
+
+#include <iostream>
+#include <string> 
+#include <iomanip>
+
+using namespace std;
+
+          
+ 
+string TrimLeft(string S1)
+{
+	for (short i = 0; i < S1.length(); i++)
+	{
+		if (S1[i] != ' ')
+		{
+			return S1.substr(i, S1.length() - i);
+		}
+	}
+	return "";
+}
+
+string TrimRight(string S1)
+{
+	for (short i = S1.length() - 1; i >= 0; i--)
+	{
+		if (S1[i] != ' ')
+		{
+			return S1.substr(0, i + 1);
+		}
+	}
+	return "";
+}
+
+string Trim(string S1) 
+{
+	return (TrimLeft(TrimRight(S1))); 
+}
+
+int main()
+{
+ 
+	string S1 = "     Zuheir      ";
+
+
+	cout << left << setw(7) << "\nString = " << S1 << endl; 
+	cout << left << setw(7) << "\nTrim Left  = " << TrimLeft(S1) << endl; 
+	cout << left << setw(7) << "Trim Rigth = " << TrimRight(S1) << endl;
+	cout << left << setw(7) << "Trim       = " << Trim(S1) << endl;  
+
+	return 0; 
+}

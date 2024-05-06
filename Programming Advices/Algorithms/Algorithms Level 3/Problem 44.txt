@@ -1,0 +1,40 @@
+#include <iostream>
+#include <string> 
+#include <vector>  
+#include <iomanip>
+
+using namespace std;
+
+
+string RemovePunctFromStrings(string S1)       
+{ 
+	string S2 = "";
+	 
+	for (int i = 0; i < S1.length(); i++)
+	{
+		if (!ispunct(S1[i]))
+		{
+			S2 += S1[i]; 
+		} 
+	}
+	return S2;   
+   
+}
+
+ 
+
+int main() 
+{
+
+	string S1 = "Welcome to Jordan, Jordan is nice country; it's amzaing.";
+
+
+	cout << "\nOrginal String: " << endl;
+	cout << S1 << endl;
+
+	cout << "\nPanctions Removed: " << endl;
+	cout << RemovePunctFromStrings(S1) << endl;       
+	
+
+	return 0;
+}

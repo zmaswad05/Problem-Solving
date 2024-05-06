@@ -1,0 +1,84 @@
+#include <iostream>
+#include <cstdlib>
+#include <iomanip>
+
+using namespace std;
+
+int RandomNumber(int From, int To) 
+{
+	//Function to generate a random number
+
+	int randNum = rand() % (To - From + 1) + From;
+	return randNum;
+} 
+
+void FillMatirxwithRandom(int arr[3][3], short Rows, short Cols)
+{
+	for (short i = 0; i < Rows; i++)
+	{
+		for (short j = 0; j < Cols; j++)
+		{
+			arr[i][j] = RandomNumber(0, 1);
+		}
+	}
+
+}
+
+void PrintMatrix(int arr[3][3], short Rows, short Cols)
+{
+	for (short i = 0; i < Rows; i++) 
+	{
+		for (short j = 0; j < Cols; j++) 
+		{
+			//cout << arr[i][j] << "  "; 
+			printf("%d  ", arr[i][j]); 
+		}
+		cout << endl;    
+	}
+}
+
+bool isIdentiyMatrix(int arr1[3][3], short Rows, short Cols)
+{
+	
+	
+		for (short i = 0; i < Rows; i++)   
+		{
+			for (short j = 0; j < Cols; j++) 
+			{
+				if (i == j && arr1[i][j] != 1) 
+				{
+					return 0; 
+				}
+				else if (i != j && arr1[i][j] != 0)
+				{
+					return 0; 
+				}
+			   
+			}
+		}
+		return 1; 
+
+}
+
+int main()
+{
+
+	srand((unsigned)time(NULL));
+
+	int arr1[3][3] = { {1,0,0}, {0,1,0}, {0,0,1} };
+
+	//FillMatirxwithRandom(arr1, 3, 3);  
+	
+
+	cout << "Matrix 1:" << endl;  
+	PrintMatrix(arr1, 3, 3); 
+
+
+	string result = ""; 
+	result = (isIdentiyMatrix(arr1, 3, 3)) ? "YES: Matrix is identiy" : "No: Matrix is Not Ideintiy";   
+	  
+	cout << "\n" << result << endl;  
+	
+
+	return 0; 
+}

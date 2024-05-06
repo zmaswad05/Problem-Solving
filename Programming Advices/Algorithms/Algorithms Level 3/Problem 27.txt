@@ -1,0 +1,32 @@
+#include <iostream>
+#include <string> 
+#include <iomanip>
+
+using namespace std;
+
+char ReadChar() 
+{
+	char C1;  
+	cout << "Please enter a Charatar?: " << endl; 
+	cin >> C1; 
+	return C1;     
+}
+
+char invertCase(char C1)
+{
+	return islower(C1) ? toupper(C1) : tolower(C1);
+}
+
+
+int main()
+{
+	char C1 = ReadChar();  
+
+	cout << "\nChar after inverting case: " << endl;
+	C1 = invertCase(C1); 
+	cout << C1 << endl; 
+
+
+
+	return 0; 
+}

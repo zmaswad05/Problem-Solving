@@ -1,0 +1,79 @@
+#include <iostream>
+#include <cstdlib>
+#include <iomanip>
+
+using namespace std;
+
+int RandomNumber(int From, int To)
+{
+	//Function to generate a random number
+
+	int randNum = rand() % (To - From + 1) + From;
+	return randNum;
+}
+ 
+void FillMatirx(int arr[3][3], short Rows, short Cols)
+{
+	for (short i = 0; i < Rows; i++) 
+	{
+		for (short j = 0; j < Cols; j++)  
+		{
+			arr[i][j] = RandomNumber(1, 100);  
+		}
+	}
+
+}
+
+void PrintMatrix(int arr[3][3], short Rows, short Cols) 
+{
+	
+ 
+	for (short i = 0; i < Rows; i++)
+	{
+		for (short j = 0; j < Cols; j++)    
+		{
+			cout << setw(3) << arr[i][j] << "\t";  
+		}
+		cout << "\n"; 
+	}
+
+
+}
+
+int ColSum(int arr[3][3], short ColNum, short Rows)     
+{
+	int Sum = 0;
+
+	for (short j = 0; j < Rows; j++)  
+	{
+		Sum += arr[j][ColNum];      
+	}
+
+	return Sum; 
+}
+
+void PrintSumofColumns( int arr[3][3], short Rows, short Cols)    
+{
+	for (short i = 0; i < Cols; i++)   
+	{
+		printf("Sum of Col %d = %d\n", i+1, ColSum(arr, i, Rows));       
+	}
+	
+}
+
+
+int main()
+{
+	srand((unsigned)time(NULL));    
+	int arr[3][3];
+	 
+	FillMatirx(arr,3,3); 
+
+	cout << "The following is 3x3 random matrix: " << endl; 
+	PrintMatrix(arr, 3, 3);    
+
+	cout << "\nThe following are the sum of each column in the matrix: " << endl;   
+	PrintSumofColumns(arr, 3, 3);   
+	 
+    return 0;
+}
