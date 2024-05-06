@@ -1,0 +1,31 @@
+#include <iostream>
+#include <string>
+#include <cmath>
+using namespace std;
+
+float ReadCircufumre() 
+{
+    float L; 
+    cout << "Please enter Circufumre: " << endl; cin >> L; 
+    return L;
+}
+
+float calAreaOfCircle(float L)
+{
+    const float pi = 3.14159265358979323846;
+    double Area = pow(L,2)/(pi*4);    
+    return Area;
+}
+
+void PrintArea(float Area)
+{
+    cout << "The area of the Circle is: " << Area;
+}
+
+int main()
+{
+    
+    PrintArea(calAreaOfCircle(ReadCircufumre())); 
+  
+    return 0;
+}

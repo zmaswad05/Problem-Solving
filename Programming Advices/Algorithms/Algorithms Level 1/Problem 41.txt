@@ -1,0 +1,36 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+float ReadPostiveNumber(string Message) 
+{
+    float num;
+    do {
+        cout << Message << endl;
+        cin >> num;
+    
+    } while (num < 0);
+
+    return num;  
+}
+
+float CaclulteWeeks(float Hours)
+{
+    return Hours / 168;
+}
+
+float CaclulteDays(float Hours) 
+{
+    return Hours / 24;
+}
+
+int main()
+{
+    float hours = ReadPostiveNumber("Enter the number of hours, to get week & days");
+
+    cout << "Weeks: " << CaclulteWeeks(hours) << endl; 
+    cout << "Days: " << CaclulteDays(hours) << endl; 
+
+    return 0;
+}
