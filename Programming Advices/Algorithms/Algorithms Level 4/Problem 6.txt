@@ -1,0 +1,106 @@
+#include <iostream>
+
+using namespace std;
+
+
+
+int ReadNumber(string Message)
+{
+    int Num;
+    cout << Message; cin >> Num;
+    return Num;
+}
+
+bool isItLeapYear(int Year)
+{
+    return (Year % 4 == 0 && Year % 100 != 0) || (Year % 400 == 0);
+}
+
+short NumberOFDaysInaMonth(short Month, int Year) 
+{
+    if (Month < 1 || Month > 12)
+    {
+        return 0;
+    }
+
+    // Days of 31 = { 1 , 3 , 5 , 7 , 8 ,10 , 12 }
+    // Days of 30 = { 4 , 6 , 9 , 11}
+     
+
+     return ((Month == 2) ? (isItLeapYear(Year) ? 29 : 28) : (((Month <=7 && Month % 2 == 1)) || ((Month > 7 && Month % 2 == 0)) ? 31 : 30));
+
+}
+
+
+int main() {
+
+
+        system("cls"); 
+        int Year = ReadNumber("Enter year to check? ");
+        int Month = ReadNumber("\nEnter Month to check? ");
+
+        cout << "\nNumber of Days in a Month [" << Month << "] is "
+            << NumberOFDaysInaMonth(Month, Year) << endl;
+
+    
+
+
+    return 0;
+}
+
+
+----------------------------------------------------
+teacher solution: 
+
+#include <iostream>
+
+using namespace std;
+
+
+
+int ReadNumber(string Message)
+{
+    int Num;
+    cout << Message; cin >> Num;
+    return Num;
+}
+
+bool isItLeapYear(int Year)
+{
+    return (Year % 4 == 0 && Year % 100 != 0) || (Year % 400 == 0);
+}
+
+short NumberOFDaysInaMonth(short Month, int Year) 
+{
+    if (Month < 1 || Month > 12)
+    {
+        return 0;
+    }
+
+      
+
+     int NumberOfDays [12] =  { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+     
+
+     return (Month == 2) ? (isItLeapYear(Year) ? 29 : 28) : NumberOfDays[Month-1]; 
+
+}
+
+
+int main() {
+
+
+        system("cls"); 
+        int Year = ReadNumber("Enter year to check? ");
+        int Month = ReadNumber("\nEnter Month to check? ");
+
+        cout << "\nNumber of Days in a Month [" << Month << "] is "
+            << NumberOFDaysInaMonth(Month, Year) << endl;
+
+        cout << "\nDo you want to contiune Y / N" << endl;
+
+
+
+
+    return 0;
+}

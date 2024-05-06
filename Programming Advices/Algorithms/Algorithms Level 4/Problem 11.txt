@@ -1,0 +1,242 @@
+My solution: 
+
+#include <iostream>
+#include <iomanip> 
+using namespace std;
+
+
+
+int ReadNumber(string Message)
+{
+    int Num;   
+    cout << Message; 
+    cin >> Num; 
+    return Num;
+}
+
+bool isItLeapYear(int Year)
+{
+    return (Year % 4 == 0 && Year % 100 != 0) || (Year % 400 == 0);
+}
+
+short NumberOFDaysInaMonth(int Year, short Month)
+{
+    if (Month < 1 || Month > 12)
+    {
+        return 0;
+    }
+
+    // Days of 31 = { 1 , 3 , 5 , 7 , 8 ,10 , 12 }
+    // Days of 30 = { 4 , 6 , 9 , 11}
+
+
+    return ((Month == 2) ? (isItLeapYear(Year) ? 29 : 28) : (((Month <= 7 && Month % 2 == 1)) || ((Month > 7 && Month % 2 == 0)) ? 31 : 30));
+
+}
+
+short DayOfTheWeekOrder(int Year, short Month, short Day)
+{
+    short a = floor((14 - Month) / 12);  
+    short y = Year - a;
+    short m = Month + 12 * a - 2;    
+    return ((Day + y + (y / 4) - (y / 100) + (y / 400) + ((31 * m) / 12))) % 7; 
+}
+
+string DayName(short DayOfTheWeekOrder)
+{
+    string DayOfWeek[7] = { "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat" };
+
+    return DayOfWeek[DayOfTheWeekOrder];
+}
+
+string FindMonth(short Month)
+{
+    string NameOfMonths[12] = { "Jan", "Feb", "Mar",
+                                "Apr", "May", "Jun", 
+                                "Jul", "Aug", "Sep",
+                                "Oct", "Nov", "Dec" };
+    return NameOfMonths[Month - 1]; 
+}
+
+int PrintDaysSniceBeginngOfTheYear(int Year, short Month, short Day)
+{
+    int daycount = 0; 
+
+    for (short i = 1; i < Month; i++)
+    {
+        daycount +=NumberOFDaysInaMonth(Year, i);
+    }
+
+    daycount += Day;   
+
+    return daycount;
+}
+
+void FindDateUsingDayNumber(int DayInTheYear, int Year)   
+{
+    short findDay = DayInTheYear; 
+    short i = 1; 
+    short findMonth = i; 
+  
+
+
+    while (findDay > 31) 
+    {
+        findDay -= NumberOFDaysInaMonth(Year, i); 
+        i++; 
+        findMonth = i; 
+    }   
+
+
+    printf("Date for [%d] is : %d/%d/%d", DayInTheYear, findDay, findMonth, Year); 
+}
+
+int main() {
+
+
+        short Day = ReadNumber("Please Enter a Day? ");
+        short Month = ReadNumber("\nPlease Enter a Month? "); 
+        int Year = ReadNumber("\nPlease enter a year? ");
+      
+        int DaysSnice = PrintDaysSniceBeginngOfTheYear(Year, Month, Day);   
+        cout << "\nNumber of Days snice the begining of the year is " << DaysSnice << endl;   
+
+        FindDateUsingDayNumber(DaysSnice,Year);
+       
+
+        system("pause>0");
+
+    return 0;
+}
+
+
+--------------------------------------------------------
+
+teacher solution: 
+
+
+#include <iostream>
+#include <iomanip> 
+using namespace std;
+
+struct sDate
+{
+    short Day;
+    short Month;
+    short Year; 
+};
+
+int ReadNumber(string Message)
+{
+    int Num;   
+    cout << Message; 
+    cin >> Num; 
+    return Num;
+}
+
+bool isItLeapYear(int Year)
+{
+    return (Year % 4 == 0 && Year % 100 != 0) || (Year % 400 == 0);
+}
+
+short NumberOFDaysInaMonth(int Year, short Month)
+{
+    if (Month < 1 || Month > 12)
+    {
+        return 0;
+    }
+
+    // Days of 31 = { 1 , 3 , 5 , 7 , 8 ,10 , 12 }
+    // Days of 30 = { 4 , 6 , 9 , 11}
+
+
+    return ((Month == 2) ? (isItLeapYear(Year) ? 29 : 28) : (((Month <= 7 && Month % 2 == 1)) || ((Month > 7 && Month % 2 == 0)) ? 31 : 30));
+
+}
+
+short DayOfTheWeekOrder(int Year, short Month, short Day)
+{
+    short a = floor((14 - Month) / 12);  
+    short y = Year - a;
+    short m = Month + 12 * a - 2;    
+    return ((Day + y + (y / 4) - (y / 100) + (y / 400) + ((31 * m) / 12))) % 7; 
+}
+
+string DayName(short DayOfTheWeekOrder)
+{
+    string DayOfWeek[7] = { "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat" };
+
+    return DayOfWeek[DayOfTheWeekOrder];
+}
+
+string FindMonth(short Month)
+{
+    string NameOfMonths[12] = { "Jan", "Feb", "Mar",
+                                "Apr", "May", "Jun", 
+                                "Jul", "Aug", "Sep",
+                                "Oct", "Nov", "Dec" };
+    return NameOfMonths[Month - 1]; 
+}
+
+int PrintDaysSniceBeginngOfTheYear(int Year, short Month, short Day)
+{
+    int daycount = 0; 
+
+    for (short i = 1; i < Month; i++)
+    {
+        daycount +=NumberOFDaysInaMonth(Year, i);
+    }
+
+    daycount += Day;   
+
+    return daycount;
+}
+
+sDate GetDateFromDayOrderInYear(short DayInTheYear, short Year)
+{
+    sDate Date;
+    short Rem = DayInTheYear;  
+    short MonthDays = 0;
+
+    Date.Year = Year;
+    Date.Month = 1; 
+
+    while (true)
+    {
+        MonthDays = NumberOFDaysInaMonth(Year,Date.Month);  
+        if (Rem > MonthDays)  
+        {
+            Rem -= MonthDays;
+            Date.Month++; 
+        }
+        else
+        {
+            Date.Day = Rem;
+            break; 
+        }
+    }
+    return Date; 
+}
+
+
+int main() {
+
+
+        short Day = ReadNumber("Please Enter a Day? ");
+        short Month = ReadNumber("\nPlease Enter a Month? "); 
+        int Year = ReadNumber("\nPlease enter a year? ");
+        int DaysSnice = PrintDaysSniceBeginngOfTheYear(Year, Month, Day);  
+
+        cout << "\nNumber of Days snice the begining of the year is " << DaysSnice << endl;   
+
+        sDate Date;  
+        Date = GetDateFromDayOrderInYear(DaysSnice, Year);
+        cout << "\nDate for [" << DaysSnice << "] is: "; 
+        cout << Date.Day << "/" << Date.Month << "/" << Date.Year << endl; 
+       
+
+        system("pause>0");
+
+    return 0;
+}
+

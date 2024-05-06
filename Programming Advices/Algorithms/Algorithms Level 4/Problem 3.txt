@@ -1,0 +1,36 @@
+#include <iostream>
+
+using namespace std; 
+
+
+int ReadNumber()
+{
+    int Num;
+    cout << "Enter a number: "; cin >> Num;
+    return Num;
+}
+
+bool isItLeapYear(int Year)
+{
+    return (Year % 4 == 0 && Year % 100 != 0) || (Year % 400 == 0);
+}
+
+int main() {
+
+
+    int number = ReadNumber();
+
+    if (isItLeapYear(number))
+    {
+        cout << number << " is a leap year" << endl;
+    }
+    else
+    {
+        cout << number << " is not a leap year" << endl;   
+    }
+     
+    
+
+
+    return 0;
+}

@@ -1,0 +1,184 @@
+
+
+#include <iostream>
+#include <iomanip>  
+#include <ctime>
+#include <vector> 
+#include "MyFirstProgram.h"
+#include <string>
+using namespace std;
+
+struct stDate {
+    short Year;
+    short Month;
+    short Day;
+};
+
+short ReadDay() {
+    short Day;
+    cout << "\nPlease enter a Day? ";  
+    cin >> Day;
+    return Day;
+}
+
+short ReadMonth() {
+    short Month;
+    cout << "Please enter a Month? ";
+    cin >> Month;
+    return Month;
+}
+
+int ReadNumber(string Message)
+{
+    int Num;
+    cout << Message;
+    cin >> Num;
+    return Num;
+}
+
+bool isItLeapYear(int Year)
+{
+    return (Year % 4 == 0 && Year % 100 != 0) || (Year % 400 == 0);
+}
+
+bool isLastMonthInYear(short Month)
+{
+    return (Month == 12);
+}
+
+short NumberOFDaysInaMonth(int Year, short Month)
+{
+    if (Month < 1 || Month > 12)
+    {
+        return 0;
+    }
+
+    // Days of 31 = { 1 , 3 , 5 , 7 , 8 ,10 , 12 }
+    // Days of 30 = { 4 , 6 , 9 , 11}
+
+
+    return ((Month == 2) ? (isItLeapYear(Year) ? 29 : 28) : (((Month <= 7 && Month % 2 == 1)) || ((Month > 7 && Month % 2 == 0)) ? 31 : 30));
+
+}
+
+bool isitLastDayInMonth(stDate Date)
+{
+    return (Date.Day == NumberOFDaysInaMonth(Date.Year, Date.Month));
+}
+
+stDate ReadDate()
+{
+    stDate Date;
+    Date.Day = ReadNumber("Please Enter a Day? ");
+    Date.Month = ReadNumber("\nPlease Enter a Month? ");
+    Date.Year = ReadNumber("\nPlease enter a year? ");
+    cout << "\n" << endl;
+    return Date;
+}
+
+short ReadYear() {
+    short Year;
+    cout << "Please enter a Year? ";
+    cin >> Year;
+    return Year;
+}
+
+stDate ReadFullDate() {
+    stDate Date;
+    Date.Day = ReadDay();
+    Date.Month = ReadMonth();
+    Date.Year = ReadYear();
+    return Date;
+}
+
+bool isDateValid(stDate Date)
+{
+    return ((Date.Day > 0 && Date.Day <= NumberOFDaysInaMonth(Date.Year, Date.Month)) && (Date.Month >= 1 && Date.Month <= 12)); 
+}
+
+string ReadDateString()
+{
+    string Date;  
+
+    cout << "\nPlease enter data in this format dd/mm/yyyy? "; 
+    getline(cin >> ws, Date); 
+
+    return Date;    
+}
+
+vector <string> SplitString(string S1, string delim)
+{
+
+    vector <string> Vstring;
+
+    size_t pos = 0;
+
+    string sWord;
+
+    while ((pos = S1.find(delim)) != std::string::npos)
+    {
+        sWord = S1.substr(0, pos);
+        if (sWord != "")
+        {
+            Vstring.push_back(sWord);
+        }
+        S1.erase(0, pos + delim.length());
+    }
+
+    if (S1 != "")
+    {
+        Vstring.push_back(S1);
+    }
+
+    return Vstring;
+}
+
+stDate StringToDate(string Date)  
+{
+    stDate sDate;   
+
+    vector <string> vDate = SplitString(Date, "/"); 
+
+    sDate.Day = stoi(vDate[0]); 
+    sDate.Month = stoi(vDate[1]);  
+    sDate.Year = stoi(vDate[2]); 
+
+
+    return sDate; 
+
+}
+
+void PrintDate(stDate Date) 
+{
+    cout << "\nDay: " << Date.Day << endl; 
+    cout << "Month: " << Date.Month << endl;
+    cout << "Year: " << Date.Year << endl; 
+
+}
+
+string DateToString(stDate Date, string Seperator = "/")
+{
+
+    string sDate = ""; 
+    sDate = to_string(Date.Day) + Seperator;  
+    sDate += to_string(Date.Month) + Seperator; 
+    sDate += to_string(Date.Year); 
+
+    return sDate;  
+}
+
+int main() {
+
+    string sDate = ReadDateString();   
+    stDate Date = StringToDate(sDate);   
+    PrintDate(Date); 
+
+    cout << "\nYou Entered: " << DateToString(Date) << endl;  
+
+    system("pause>0");
+
+    return 0;
+}
+
+
+

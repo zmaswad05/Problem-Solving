@@ -1,0 +1,52 @@
+#include <iostream>
+
+using namespace std; 
+
+int ReadNumber(string Message)
+{
+    int Num;
+    cout << Message ; cin >> Num; 
+    return Num;
+}
+
+bool isItLeapYear(int Year)
+{
+    return (Year % 4 == 0 && Year % 100 != 0) || (Year % 400 == 0);
+}
+
+
+short NumberOFDaysInaYear(short Year)
+{
+    return isItLeapYear(Year) ? 366 : 365; 
+}
+
+int NumberOFHoursInaYear(short Year)
+{
+    return NumberOFDaysInaYear(Year) * 24;
+}
+
+int NumberOFMinutesInaYear(short Year)
+{
+    return NumberOFHoursInaYear(Year) * 60;
+}
+
+int NumberOFSecondsInaYear(short Year)
+{
+    return NumberOFMinutesInaYear(Year) * 60;
+}
+
+
+
+int main() {
+
+    int number = ReadNumber("Enter year to check? ");
+    
+    cout << "\nNumber of Days in Year [" << number << "] is " << NumberOFDaysInaYear(number) << endl;  
+    cout << "Number of Hours in Year [" << number << "] is " << NumberOFHoursInaYear(number) << endl;
+    cout << "Number of Minutes in Year [" << number << "] is " << NumberOFMinutesInaYear(number) << endl;
+    cout << "Number of Seconds in Year [" << number << "] is " << NumberOFSecondsInaYear(number) << endl;
+    
+     
+
+    return 0;
+}

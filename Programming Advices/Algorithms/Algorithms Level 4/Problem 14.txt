@@ -1,0 +1,76 @@
+#include <iostream>
+#include <iomanip> 
+using namespace std;
+
+struct sDate
+{
+    short Day;
+    short Month;
+    short Year; 
+};
+
+int ReadNumber(string Message) 
+{
+    int Num;
+    cout << Message;
+    cin >> Num;
+    return Num;
+}
+ 
+sDate ReadDate()
+{ 
+     sDate Date;  
+     Date.Day = ReadNumber("Please Enter a Day? ");  
+     Date.Month = ReadNumber("\nPlease Enter a Month? ");   
+     Date.Year = ReadNumber("\nPlease enter a year? ");  
+     cout << "\n" << endl;  
+    return Date;   
+}    
+ 
+//bool IsDate1EqualDate2(sDate Date1, sDate Date2) 
+//{
+//    return ((Date1.Year == Date2.Year) && (Date1.Month == Date2.Month) && (Date1.Day == Date2.Day)); 
+//}
+
+bool IsDate1EqualDate2(sDate Date1, sDate Date2) 
+{
+    return  (Date1.Year == Date2.Year) ? ((Date1.Month == Date2.Month) ? ((Date1.Day == Date2.Day) ? true : false) : false) : false; 
+}
+
+int main() {
+
+
+
+    // Test Case 1: Dates are equal
+    sDate testDate1 = { 2022, 3, 15 }; 
+    sDate testDate2 = { 2022, 3, 15 }; 
+    cout << "Test Case 1: " << IsDate1EqualDate2(testDate1, testDate2) << endl;
+
+    // Test Case 2: Years are different
+    testDate1 = { 2021, 3, 15 };
+    testDate2 = { 2022, 3, 15 };
+    cout << "Test Case 2: " << IsDate1EqualDate2(testDate1, testDate2) << endl;
+
+    // Test Case 3: Months are different
+    testDate1 = { 2022, 3, 15 };
+    testDate2 = { 2022, 4, 15 };
+    cout << "Test Case 3: " << IsDate1EqualDate2(testDate1, testDate2) << endl;
+
+    // Test Case 4: Days are different
+    testDate1 = { 2022, 3, 15 };
+    testDate2 = { 2022, 3, 16 };
+    cout << "Test Case 4: " << IsDate1EqualDate2(testDate1, testDate2) << endl;
+
+    // Test Case 5: All components are different
+    testDate1 = { 2021, 2, 10 };
+    testDate2 = { 2022, 4, 25 };
+    cout << "Test Case 5: " << IsDate1EqualDate2(testDate1, testDate2) << endl;
+
+    // Test Case 6: Leap year, same date
+    testDate1 = { 2020, 6, 30 };
+    testDate2 = { 2020, 6, 30 };
+    cout << "Test Case 6: " << IsDate1EqualDate2(testDate1, testDate2) << endl;
+
+       
+
+    r
