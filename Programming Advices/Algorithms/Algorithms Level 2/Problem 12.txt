@@ -1,0 +1,38 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int ReadPostiveNumber(string Message) 
+{ 
+    int Num;
+    do {
+        cout << Message; cin >> Num;
+    } while (Num <= 0); 
+    return Num;
+}
+
+void Print_Inverted_Patter(int n) 
+{
+    
+    for (int i = n; i >=1; i--)  
+    {
+        for (int j = 1; j <=i ; j++)    
+        {
+            cout << i;  
+        } 
+        cout << "\n"; 
+        
+    }
+       
+
+
+}
+
+int main()
+{
+ 
+    Print_Inverted_Patter(ReadPostiveNumber("Enter a postive number: ")); 
+    
+    return 0;
+}

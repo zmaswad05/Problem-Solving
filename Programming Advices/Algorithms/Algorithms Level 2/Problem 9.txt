@@ -1,0 +1,55 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int ReadPostiveNumber(string Message) 
+{ 
+    int Num;
+    do {
+        cout << Message; cin >> Num;
+    } while (Num <= 0); 
+    return Num;
+}
+
+int Find_Frequeney_ofaDigit_InNumber(int num, short digit)
+{
+    int Rem = 0; int counter = 0; 
+    while (num > 0)
+    {
+        Rem = num % 10;
+        num = num / 10; 
+        if (Rem == digit)
+        {
+            counter++; 
+        }
+
+    }
+
+    return counter; 
+
+     
+}
+
+void PrintAllDigitInFrequency(int num)
+{
+    for (int i = 0; i <= 9; i++)
+    {
+        short digitfreq = 0;
+        digitfreq = Find_Frequeney_ofaDigit_InNumber(num, i);
+        if (digitfreq > 0)
+         cout << "The frequency of " << i << " is " << digitfreq << " Time(s)" << endl;
+    }
+
+}
+
+int main()
+{
+ 
+    int Num = ReadPostiveNumber("Enter a postive Number: ");
+    PrintAllDigitInFrequency(Num); 
+   
+   
+    
+    return 0;
+}

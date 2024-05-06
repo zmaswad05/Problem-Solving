@@ -1,0 +1,39 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int ReadPostiveNumber()
+{ 
+    int Num;
+    do {
+        cout << "Enter a number: "; cin >> Num;
+    } while (Num <= 0);
+    return Num;
+}
+
+int ReverseNumber(int num)   
+{
+    int Rem = 0, Num2 = 0;
+
+    while (num > 0)
+    {
+        Rem = num % 10;
+        num = num / 10;
+        Num2 = Num2 * 10 + Rem; 
+    }
+
+    return Num2; 
+     
+}
+
+int main()
+{
+ 
+    cout << "Revrse number is: "
+        << ReverseNumber(ReadPostiveNumber())
+        << "\n"; 
+   
+    
+    return 0;
+}

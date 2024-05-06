@@ -1,0 +1,87 @@
+#include <iostream>
+#include <cstdlib>
+using namespace std;
+
+int RandomNumber(int From, int To)
+{
+	//Function to generate a random number
+
+	int randNum = rand() % (To - From + 1) + From;
+	return randNum;
+}
+
+int ReadPostiveNumber(string Message)
+{
+	int num = 0;
+	do
+	{
+		cout << Message;
+		cin >> num;
+	} while (num <= 0);
+	return num;
+}
+
+void FillArrayWithRandomNumbers(int arr[100], short numOfElements)
+{
+
+	for (int i = 0; i < numOfElements; i++)
+	{
+		arr[i] = RandomNumber(1, 100);
+	}
+
+}
+
+void PrintArray(int arr[100], short length)
+{
+	for (int i = 0; i < length; i++)
+		cout << arr[i] << " ";
+}
+
+short FindNumberPositionInArray(int Number, int arr[100], int arrLength) 
+{
+	
+	for (int i = 0; i < arrLength; i++)
+	{
+		if (arr[i] == Number)
+			return i;// and return the index
+	}
+	//if you reached here, this means the number is not found
+	return -1;
+}
+
+
+
+int main(){
+
+	srand((unsigned)time(NULL));  
+
+	int arr[100]; 
+	short arrlength = ReadPostiveNumber("Enter number of elements in the array: ");
+	short Number = 0; 
+
+	FillArrayWithRandomNumbers(arr , arrlength);
+
+	cout << "\nArray 1 elements: " << endl; 
+	PrintArray(arr, arrlength); 
+	cout << "\n\n";
+
+	Number = ReadPostiveNumber("Please enter a number to search for?\n"); 
+	cout << "\nNumer You are looking for: " << Number << endl;   
+
+	short NumberPostion = FindNumberPositionInArray(Number , arr, arrlength); 
+
+		if (NumberPostion == -1)
+		{
+			cout << "The number is not found :-(" << endl;
+		
+		}
+		else
+		{
+			cout << "The number found at postion: " << NumberPostion  << endl;
+			cout << "The number found its order: " << NumberPostion + 1 << endl;
+		}
+
+
+	 
+
+}

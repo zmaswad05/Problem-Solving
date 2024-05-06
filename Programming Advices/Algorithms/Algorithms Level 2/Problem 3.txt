@@ -1,0 +1,117 @@
+With ENUMS 
+
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+enum enIsPerfect {Perfect = 1 , NotPerfect = 2};
+
+int ReadPostiveNumber(string Message) 
+{
+    int N = 0; 
+    do {
+        cout << Message; cin >> N; 
+    } while (N <= 0);
+
+    return N; 
+}
+
+enIsPerfect sumDivsoirs(int Number) 
+{
+    int Sum = 0; 
+    int M = round(Number / 2);
+
+    for (int i = 1; i <= M; i++)
+    {
+        if (Number % i == 0)
+        {
+            Sum += i;
+        }
+    }
+   
+    if (Number == Sum)
+    {
+        return enIsPerfect::Perfect; 
+    }
+    else
+    {
+        return enIsPerfect::NotPerfect;
+    }
+}
+
+void PrintReuslt(int Num) 
+{
+    if (sumDivsoirs (Num) == enIsPerfect::Perfect)  
+    {
+        cout << Num << " is Perfect" << endl; 
+    }
+    else 
+        cout << Num << " is Not Perfect" << endl;
+
+}
+
+int main()
+{
+   
+    PrintReuslt(ReadPostiveNumber("Enter a Postive Number: "));
+    
+
+    return 0;
+}
+
+********************************************************************************************************************
+With Boolen
+
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+
+
+int ReadPostiveNumber(string Message) 
+{
+    int N = 0; 
+    do {
+        cout << Message; cin >> N; 
+    } while (N <= 0);
+
+    return N; 
+}
+
+bool sumDivsoirs(int Number) 
+{
+    int Sum = 0; 
+    int M = round(Number / 2);
+
+    for (int i = 1; i <= M; i++)
+    {
+        if (Number % i == 0)
+        {
+            Sum += i;
+        }
+    }
+   
+    return (Number == Sum);
+}
+
+void PrintReuslt(int Num) 
+{
+    if (sumDivsoirs(Num))  
+    {
+        cout << Num << " is Perfect" << endl; 
+    }
+    else 
+        cout << Num << " is Not Perfect" << endl;
+
+}
+
+int main()
+{
+   
+    PrintReuslt(ReadPostiveNumber("Enter a Postive Number: "));
+    
+
+    return 0;
+}

@@ -1,0 +1,63 @@
+#include <iostream>
+#include <cstdlib>
+using namespace std;
+
+
+int ReadNumber()
+{
+	int num = 0;
+	
+	cout << "Please enter a number: "; 
+		cin >> num;
+	
+	return num;
+}
+
+bool ReadAnswer(string Message)
+{
+	int num = 0;
+	do {
+		cout << Message;
+		cin >> num;
+	} while (num > 1 || num < 0);
+	return num;
+
+}
+
+void AddNumbertoArray(int number,int arr[100], short& length) 
+{
+	arr[length] = number; 
+	length++;  
+}
+
+void InputUserNumbersInArray(int arr[100], short &length)    
+{
+	
+	bool AddMore;
+	do
+	{
+		AddNumbertoArray(ReadNumber(), arr , length);  
+		AddMore = ReadAnswer("\nDo you want to add more numbers? [0]: No , [1]Yes?  ");
+		cout << "\n\n";
+	} while (AddMore != 0);     
+
+}
+
+void PrintArray(int arr[100], short length)
+{
+	cout << "Array Elements: "; 
+	for (int i = 0; i < length; i++)
+		cout << arr[i] << " ";
+}
+
+
+int main(){
+
+	int arr[100]; 
+	short arrlength = 0; 
+
+	InputUserNumbersInArray(arr, arrlength); 
+	cout << "Array length: " << arrlength << endl; 
+	PrintArray(arr, arrlength);   
+
+}

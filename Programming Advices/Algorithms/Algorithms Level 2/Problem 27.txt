@@ -1,0 +1,70 @@
+#include <iostream>
+#include <cstdlib>
+using namespace std;
+
+int RandomNumber(int From, int To)
+{
+	//Function to generate a random number
+
+	int randNum = rand() % (To - From + 1) + From;
+	return randNum;
+}
+
+int ReadPostiveNumber(string Message)
+{
+	int num = 0;
+	do
+	{
+		cout << Message;
+		cin >> num;
+	} while (num <= 0);
+	return num;
+}
+
+void FillArrayWithRandomNumbers(int arr[100], short& numOfElements)
+{
+	numOfElements = ReadPostiveNumber("Enter the number of elements: ");
+
+	for (int i = 0; i < numOfElements; i++)
+	{
+		arr[i] = RandomNumber(1, 100);
+	}
+
+}
+
+void PrintArray(int arr[100], short numOfElements)
+{
+	cout << "\nArray Elements: ";
+	for (int i = 0; i < numOfElements; i++)
+		cout << arr[i] << " ";
+}
+
+int SumOfArray(int arr[100], short numOfElements)
+{
+	int sum = 0;
+	for (int i = 0; i < numOfElements; i++)
+	{
+		sum += arr[i];
+	}
+	return sum;
+}
+
+float AverageArray(int arr[100], short numOfElements)
+{
+	return (float(SumOfArray(arr, numOfElements)) / numOfElements); 
+}
+
+int main() {
+
+	srand((unsigned)time(NULL));
+
+	int arr[100];
+	short numOfElements;
+
+	FillArrayWithRandomNumbers(arr, numOfElements);
+	PrintArray(arr, numOfElements);
+	cout << "\nAverage of array is: " 
+	<< AverageArray(arr, numOfElements);   
+
+	return 0;
+}
