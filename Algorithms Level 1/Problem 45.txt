@@ -1,0 +1,68 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+enum enMonth {Jan = 1 , Feb = 2 , March = 3 , April = 4 , May = 5,
+June = 6 , July = 7 ,  Aug = 8 , Sep = 9 , Oct = 10 , Nov = 11 , Dec = 12}; 
+
+int ReadNumberInRange(string Message , int From ,  int To) 
+{
+    float num;
+    cout << Message << endl; 
+    cin >> num; 
+    while (num < From || num > To) { 
+        cout << "Wrong Month number, please enter a vaild Day number" << endl; 
+        cout << Message << endl;
+        cin >> num;
+
+    }    
+
+    return num; 
+}
+
+enMonth ReadDayOfTheWeek() 
+{
+    return  (enMonth)ReadNumberInRange("Enter number of day between 1 to 12" , 1 , 12);
+}
+
+string GetDayOfTheWeek(enMonth Month)
+{
+    switch (Month)
+    {
+    case Jan:
+        return "It's Jan";
+    case Feb:
+        return "It's Feb";
+    case March:
+        return "It's March";
+    case April:
+        return "It's April";
+    case May:
+        return "It's May";
+    case June:
+        return "It's June";
+    case July:
+        return "It's July";
+    case Aug:
+        return "It's Aug";
+    case Sep:
+        return "It's Sep";
+    case Oct:
+        return "It's Oct";
+    case Nov:
+        return "It's Nov";
+    case Dec:
+        return "It's Dec";
+    }
+
+
+}
+
+int main()
+{
+    cout << GetDayOfTheWeek(ReadDayOfTheWeek()) << endl; 
+
+
+    return 0;
+}

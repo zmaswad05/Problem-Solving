@@ -1,0 +1,57 @@
+#include <iostream>
+
+using namespace std;
+
+
+void ReadNum(int &b ,  int &p)
+{
+    
+    cout << "Enter the base: "; cin >> b;
+    cout << "Enter the power: "; cin >> p;
+
+    while ((b < 0 || p < 0) || (b == 0 && p == 0 ))
+    {
+        cout << "Please condiser entering postive numbers: " << endl;
+        cout << "Enter the base: "; cin >> b;
+        cout << "Enter the power: "; cin >> p;
+
+    }
+
+    
+}
+
+int calPowerM(int b , int p)  
+{
+    int reuslt = 1;
+    int B = b;  
+
+    if (b == 0)
+        return 0;
+    else if (p == 0)
+        return 1;
+    else {
+        for (int i = 1; i <= p; i++) 
+        {
+            reuslt *=B; 
+        }
+        return reuslt;  
+    }
+
+    
+}
+
+void PrintReuslt(int result)
+{
+    cout << "The reuslt is " << result; 
+}
+
+int main()
+{
+    
+    int base, power; 
+
+    ReadNum(base, power);
+    PrintReuslt(calPowerM(base, power));    
+
+    return 0;
+}

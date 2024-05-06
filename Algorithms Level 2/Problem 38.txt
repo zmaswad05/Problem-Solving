@@ -1,0 +1,83 @@
+#include <iostream>
+#include <cstdlib>
+using namespace std;
+
+int RandomNumber(int From, int To)
+{
+	//Function to generate a random number
+
+	int randNum = rand() % (To - From + 1) + From;
+	return randNum;
+}
+
+int ReadPostiveNumber(string Message)
+{
+	int num = 0;
+	do
+	{
+		cout << Message;
+		cin >> num;
+	} while (num <= 0);
+	return num;
+}
+
+void FillArrayWithRandomNumbers(int arr[100], short& numOfElements)
+{
+	numOfElements = ReadPostiveNumber("Enter the number of elements: ");
+
+	for (int i = 0; i < numOfElements; i++)
+	{
+		arr[i] = RandomNumber(1, 100);
+	}
+
+}
+
+void PrintArray(int arr[100], short numOfElements)
+{
+
+	for (int i = 0; i < numOfElements; i++)
+		cout << arr[i] << " ";
+}
+
+void AddNumbertoArray(int number, int arr2[100], short& length)
+{
+	arr2[length] = number; 
+	length++;
+}
+
+void FillOnlyOddNumbers(int sourcearr[100], short numOfElements , int Oddarr2[100], short &length) 
+{
+	for (int i = 0; i < numOfElements; i++)
+	{
+		if (sourcearr[i] % 2 != 0)
+		{
+			AddNumbertoArray(sourcearr[i], Oddarr2, length);   
+		}
+	}
+}
+
+
+int main() {
+
+	srand((unsigned)time(NULL));
+
+	int arr[100];
+	int arr2[100];
+	short numOfElements;
+	short arrlength = 0; 
+
+	FillArrayWithRandomNumbers(arr, numOfElements);
+	FillOnlyOddNumbers(arr, numOfElements, arr2, arrlength); 
+
+
+	cout << "\nArray 1 Elements: ";
+	PrintArray(arr, numOfElements);
+	cout << endl;  
+
+
+	cout << "\nArray 2 Odd numbers: ";
+	PrintArray(arr2, arrlength); 
+	cout << endl;   
+
+	return 0;
+}

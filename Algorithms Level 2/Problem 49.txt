@@ -1,0 +1,43 @@
+#include <iostream>
+#include <cstdlib>
+using namespace std;
+
+
+
+float ReadNumber(string Message)
+{
+	float num = 0;
+	
+		cout << Message;
+		cin >> num;
+	
+	return num;
+}
+
+float GetFractionPart(float number)
+{
+	return  number - int(number);
+}
+
+int MyCeil(float num) 
+{
+	if (abs(GetFractionPart(num)) > 0)
+	{
+		if (num > 0)
+			return int(num) + 1;
+		else
+			return int(num);
+	}
+	else
+		return num;  
+}
+
+int main() 
+{
+	 
+	 float Number  = ReadNumber("Enter a number: "); 
+
+	cout << "My Ceil Result : " << MyCeil(Number) << endl;   
+	cout << "C++ Ceil Result : " << ceil(Number) << endl;     
+	  
+}

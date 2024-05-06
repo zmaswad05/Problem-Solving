@@ -1,0 +1,39 @@
+#include <iostream>
+#include <cstdlib>
+using namespace std;
+
+
+
+float ReadNumber(string Message)
+{
+	float num = 0;
+	
+		cout << Message;
+		cin >> num;
+	
+	return num;
+}
+
+int MyFloor(float num) 
+{
+	if (num >= 0)
+	{
+		return int(num); 
+	}
+	else
+	{
+	
+		return int(num) - 1; 
+	}
+
+}
+
+int main() 
+{
+	 
+	 float Number  = ReadNumber("Enter a number: "); 
+
+	cout << "My floor Result : " << MyFloor(Number) << endl;   
+	cout << "C++ floor Result : " << floor(Number) << endl;    
+	  
+}

@@ -1,0 +1,80 @@
+#include <iostream>
+#include <cstdlib>
+using namespace std;
+
+int RandomNumber(int From, int To)
+{
+	//Function to generate a random number
+
+	int randNum = rand() % (To - From + 1) + From;
+	return randNum;
+}
+
+void Swap(int& n1, int& n2) 
+{
+	int temp = 0;
+
+	temp = n1;
+	n1 = n2;
+	n2 = temp;
+
+}
+
+int ReadPostiveNumber(string Message)
+{
+	int num = 0;
+	do
+	{
+		cout << Message;
+		cin >> num;
+	} while (num <= 0);
+	return num;
+}
+
+void FillArrayWithNumbersFrom_1toN(int arr[100], short arrLength)
+{
+	
+	for (int i = 0; i < arrLength; i++)  
+	{
+		arr[i] = i+1;
+	}
+
+}
+
+void PrintArray(int arr[100], short length)
+{
+	for (int i = 0; i < length; i++) 
+		cout << arr[i] << " ";
+}
+
+void ShuffleArray(int arr[100], short length)
+{
+	
+	for (int i = 0; i < length; i++) 
+	{
+		Swap(arr[RandomNumber(1, length) - 1], arr[RandomNumber(1, length) - 1]);
+	} 
+}
+
+int main() {
+
+	srand((unsigned)time(NULL));
+
+	int arr1[100];  
+	short arrLength; 
+	arrLength = ReadPostiveNumber("Enter the number of elements: ");
+
+	FillArrayWithNumbersFrom_1toN(arr1, arrLength); 
+	cout << "\nArray Elements before Shuffle:" << endl;  
+    PrintArray(arr1, arrLength); 
+	cout << "\n"; 
+
+
+	ShuffleArray(arr1, arrLength); 
+	cout << "\nArray Elements After Shuffle:" << endl;
+	PrintArray(arr1, arrLength); 
+	cout << "\n";
+
+
+	return 0;
+}

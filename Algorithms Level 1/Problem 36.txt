@@ -1,0 +1,56 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+enum enOPertionType  { Add = '+' , Subtract = '-' , Multiplay = '*' , Divde = '/' };
+
+int ReadNum(string Message)
+{
+    int number;
+    cout << Message << endl;
+    cin >> number;
+    return number; 
+}
+
+enOPertionType ReadOPT()
+{
+    char OT = '@';
+
+    cout << "Choose your opertion typee {'+' , '-' , '*' , '/'}" << endl;
+    cin >> OT;
+    return enOPertionType(OT); 
+}
+
+float CaclulteReuslt(int n1, int n2, enOPertionType OpT)
+{
+
+    switch (OpT)  
+    { 
+    case enOPertionType::Add: 
+        return n1+n2;  
+    case enOPertionType::Subtract:
+        return n1-n2;
+    case enOPertionType::Multiplay:
+        return n1 * n2;
+    case enOPertionType::Divde:
+        return n1 / n2;
+    default: 
+        return n1+n2; 
+    }
+
+
+}
+
+
+int main()
+{
+    int number1 = ReadNum("Enter First Number?");
+    int number2 = ReadNum("Enter Second Number?");
+    
+    enOPertionType OpType = ReadOPT(); 
+
+    cout << "Result: " << CaclulteReuslt(number1, number2, OpType); 
+
+    return 0;
+}

@@ -1,0 +1,58 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+struct stTaskDuration 
+{
+    int days;
+    int hours;
+    int minutes;
+    int seconds;
+
+}; 
+int ReadPostiveNumber(string Message)
+{
+    float num;
+    do {
+        cout << Message << endl;
+        cin >> num;
+
+    } while (num < 0); 
+
+    return num; 
+}
+
+stTaskDuration Convert_Days_Hours_Min(int TotalSeconds)   
+{
+    stTaskDuration time;
+    int Rem = 0;
+
+    time.days = floor(TotalSeconds / 86400); 
+    Rem = TotalSeconds - (time.days * 86400);  
+    TotalSeconds = Rem;  
+    time.hours = floor(TotalSeconds / 3600);    
+    Rem = TotalSeconds - (time.hours * 3600);    
+    TotalSeconds = Rem; 
+    time.minutes = floor(TotalSeconds/60); 
+    Rem = TotalSeconds - (time.minutes * 60);    
+    time.seconds = Rem;   
+
+    return time;  
+}  
+
+void PrintTime(stTaskDuration time)
+{
+    cout << time.days << " days, " << time.hours << " hours, "
+        << time.minutes << " minutes, " << time.seconds << " seconds" << endl;
+
+}
+
+int main()
+{
+    int Seconds = ReadPostiveNumber("Enter Seconds");
+
+    PrintTime(Convert_Days_Hours_Min(Seconds)); 
+
+    return 0;
+}

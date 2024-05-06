@@ -1,0 +1,42 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+
+
+int ReadNum(int number[3])
+{
+   
+
+        cout << "Enter a number 1 : "; cin >> number[0];
+        cout << "Enter a number 2 : "; cin >> number[1]; 
+        cout << "Enter a number 3 : "; cin >> number[2];  
+
+        return number[3]; 
+
+}
+
+float AvrageNumber(int number[3]) 
+{
+    float Averge = (float(number[0]) + float(number[1]) + float(number[2])) / 3;
+    return Averge;
+}
+
+
+void PrintSum(int number[3])
+{ 
+    cout << "The Aevrage is: " << AvrageNumber(number);
+    
+}
+
+int main()
+{
+    int Num[3];
+
+    ReadNum(Num); 
+    PrintSum(Num);
+    
+
+    return 0;
+}

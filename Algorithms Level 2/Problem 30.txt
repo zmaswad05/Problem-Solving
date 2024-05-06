@@ -1,0 +1,76 @@
+#include <iostream>
+#include <cstdlib>
+using namespace std;
+
+int RandomNumber(int From, int To)
+{
+	//Function to generate a random number
+
+	int randNum = rand() % (To - From + 1) + From;
+	return randNum;
+}
+
+int ReadPostiveNumber(string Message)
+{
+	int num = 0;
+	do
+	{
+		cout << Message;
+		cin >> num;
+	} while (num <= 0);
+	return num;
+}
+
+void FillArrayWithRandomNumbers(int arr[100], short numOfElements)
+{
+	
+	for (int i = 0; i < numOfElements; i++)
+	{
+		arr[i] = RandomNumber(1, 100);
+	}
+
+}
+
+void PrintArray(int arr[100], short length)
+{
+	for (int i = 0; i < length; i++) 
+		cout << arr[i] << " ";
+}
+
+void SumArrays(int arr1[100], int arr2[100], int Sumarr3[100], short numOfElements)
+{
+	for (int i = 0; i < numOfElements; i++)
+	{
+		Sumarr3[i] = arr1[i] + arr2[i]; 
+	}
+
+}
+
+int main() {
+
+	srand((unsigned)time(NULL));
+
+	int arr1[100];
+	int arr2[100]; 
+	int Sumarr3[100];  
+	short numOfElements; 
+	numOfElements = ReadPostiveNumber("Enter the number of elements: "); 
+
+	FillArrayWithRandomNumbers(arr1, numOfElements); 
+	cout << "\nArray 1 Elements:" << endl;
+	PrintArray(arr1, numOfElements);
+	cout << "\n"; 
+
+	FillArrayWithRandomNumbers(arr2, numOfElements); 
+	cout << "\nArray 2 Elements:" << endl;
+	PrintArray(arr2, numOfElements); 
+	cout << "\n"; 
+
+	SumArrays(arr1 , arr2, Sumarr3, numOfElements);   
+	cout << "\nSum of Array 1 & Array 2 elements: " << endl;
+	PrintArray(Sumarr3, numOfElements);   
+	cout << "\n"; 
+	
+
+	return 0;
+}
