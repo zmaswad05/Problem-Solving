@@ -1,0 +1,32 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+float ReadPostiveNumber(string Message) 
+{
+    float num;
+    do {
+        cout << Message << endl;
+        cin >> num;
+    
+    } while (num <= 0);
+
+    return num;  
+}
+
+float caclucteTB(float billValue)
+{
+    float BillAfterServiceFee = billValue * 1.10;
+    float TotalBillwithTaxses = BillAfterServiceFee * 1.16;
+    return TotalBillwithTaxses;  
+}
+
+int main()
+{
+    float BillValue = ReadPostiveNumber("Enter the bill value: ");
+
+    cout << "Total Bill is: " << caclucteTB(BillValue); 
+
+    return 0;
+}

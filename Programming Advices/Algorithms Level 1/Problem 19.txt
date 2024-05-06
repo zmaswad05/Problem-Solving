@@ -1,0 +1,32 @@
+#include <iostream>
+#include <string>
+#include <cmath>
+const float pi = 3.14159265358979323846;
+using namespace std;
+
+float ReadDiameter() 
+{
+    float D; 
+    cout << "Please enter Diameter: " << endl; cin >> D; 
+    return D;
+}
+
+float calAreaOfCircle(float D)
+{
+    double Area = (pi*pow(D,2))/4;  
+    return Area;
+}
+
+void PrintArea(float Area)
+{
+    cout << "The area of the Circle is: " << Area;
+}
+
+int main()
+{
+    
+   
+    PrintArea(calAreaOfCircle(ReadDiameter()));  
+  
+    return 0;
+}

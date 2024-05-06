@@ -1,0 +1,31 @@
+#include <iostream>
+#include <string>
+#include <cmath>
+using namespace std;
+
+void ReadHB(float &h, float &b)
+{
+    cout << "Please enter height: " << endl; cin >> h;
+    cout << "Please enter base: " << endl; cin >> b;
+}
+
+float calAreaOfTriagnle(float h, float b)
+{
+   float Area = (h * b) / 2;
+    return Area;
+}
+
+void PrintArea(float Area)
+{
+    cout << "The area of the Triangle is: " << Area;
+}
+
+int main()
+{
+    float h, b; 
+    
+    ReadHB(h, b);
+    PrintArea(calAreaOfTriagnle(h, b)); 
+  
+    return 0;
+}
