@@ -1,0 +1,70 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+float readTotalSales()
+{
+    float totalSales = 0; 
+    cout << "Enter your Total Sales: ";
+    cin >> totalSales;
+    return totalSales; 
+}
+
+float calculateCommissionTotal(float totalSales)
+{
+    float commissionPercentage = 0;
+    float totalCommission = 0; 
+
+    if (totalSales >= 1000000)
+    {
+        cout << "\nYour commission percentage is 1%\n";
+        commissionPercentage = 0.01;
+        totalCommission = commissionPercentage * totalSales;
+        return totalCommission;  
+    }
+    else if (totalSales >= 500000)
+    {
+        cout << "\nYour commission percentage is 2%\n";
+        commissionPercentage = 0.02;
+        totalCommission = commissionPercentage * totalSales; 
+        return totalCommission; 
+    }
+    else if (totalSales >= 100000)
+    {
+        cout << "\nYour commission percentage is 3%\n";
+        commissionPercentage = 0.03;
+        totalCommission = commissionPercentage * totalSales; 
+        return totalCommission;
+    }
+    else if (totalSales >= 50000)
+    {
+        cout << "\nYour commission percentage is 5%\n";
+        commissionPercentage = 0.05;
+        totalCommission = commissionPercentage * totalSales;
+        return totalCommission;
+    }
+    else
+    {
+        cout << "\nYour commission percentage is 0%\n";
+        commissionPercentage = 0;
+        totalCommission = commissionPercentage * totalSales;
+        return totalCommission;
+    }
+}
+
+void printTotalCommission(float totalCommission)
+{
+    
+
+    cout << "Your Total Commission is: " << totalCommission;
+}
+
+int main()
+{
+    
+    printTotalCommission(calculateCommissionTotal(readTotalSales())); 
+
+
+    return 0;
+}

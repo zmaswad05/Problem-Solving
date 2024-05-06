@@ -1,0 +1,58 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+enum enIsPrime {Prime = 1 , NotPrime = 2};
+
+int ReadNumber() 
+{
+    int number = 0;
+
+    cout << "Enter a number to check if it is prime" << endl;
+    cin >> number;
+   
+    return number; 
+
+}
+
+enIsPrime CheckPrime(int Num) 
+{
+    while (Num <= 1)
+    {
+        cout << "Sorry, Number must be greater than One: ";
+        Num = ReadNumber(); 
+    }
+
+   int  M = round(Num / 2); 
+
+    for (int counter = 2; counter <= M; counter++){
+        if (Num % counter == 0) 
+        {
+            return enIsPrime::NotPrime; 
+        }
+    }
+
+    return enIsPrime::Prime; 
+   
+}
+
+void PrintReuslt(enIsPrime result)
+{
+    if (result == enIsPrime::Prime)
+    
+        cout << "Prime" << endl;
+    
+    else 
+        cout << "Not Prime" << endl;
+
+}
+
+int main()
+{
+  
+    PrintReuslt(CheckPrime(ReadNumber())); 
+
+
+    return 0;
+}

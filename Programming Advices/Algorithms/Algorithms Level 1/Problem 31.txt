@@ -1,0 +1,42 @@
+#include <iostream>
+
+using namespace std;
+
+int ReadNum()
+{
+    int n;
+    cout << "Enter the number: " << endl;
+    cin >> n;
+    return n;
+
+}
+
+
+void Power2_3_4(int number)
+{
+    int p2 = 0;
+    int p3 = 0;
+    int p4 = 0;
+
+    p2 = number * number;
+    p3 = number * number * number;  
+    p4 = number * number * number * number; 
+    
+
+    cout << p2 << endl; 
+    cout << p3 << endl; 
+    cout << p4 << endl; 
+
+
+}
+
+
+
+int main()
+{
+    
+        Power2_3_4(ReadNum()); 
+
+
+    return 0;
+}

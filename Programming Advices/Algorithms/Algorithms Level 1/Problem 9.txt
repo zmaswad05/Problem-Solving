@@ -1,0 +1,89 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+struct stReadNums
+{
+    int number1;
+    int number2;
+    int number3;
+
+};
+
+stReadNums ReadNum()
+{
+    stReadNums nums; 
+
+        cout << "Enter a number 1 : "; cin >> nums.number1; 
+        cout << "Enter a number 2 : "; cin >> nums.number2; 
+        cout << "Enter a number 3 : "; cin >> nums.number3;  
+
+        return nums; 
+
+}
+
+int SumNumber(stReadNums nums)
+{
+    return nums.number1 + nums.number2 + nums.number3;   
+}
+
+
+void PrintSum(stReadNums nums) 
+{ 
+    cout << "The sum is: " << SumNumber(nums); 
+    
+}
+
+int main()
+{
+
+    PrintSum(ReadNum());  
+    
+
+    return 0;
+}
+-----------------------------------------------------------------------------------------
+Array
+
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+
+
+int ReadNum(int number[3])
+{
+   
+
+        cout << "Enter a number 1 : "; cin >> number[0];
+        cout << "Enter a number 2 : "; cin >> number[1]; 
+        cout << "Enter a number 3 : "; cin >> number[2];  
+
+        return number[3]; 
+
+}
+
+int SumNumber(int number[3])
+{
+    return number [0] + number[1] + number[2];
+}
+
+
+void PrintSum(int number[3])
+{ 
+    cout << "The sum is: " << SumNumber(number);
+    
+}
+
+int main()
+{
+    int Num[3];
+
+    ReadNum(Num); 
+    PrintSum(Num);
+    
+
+    return 0;
+}

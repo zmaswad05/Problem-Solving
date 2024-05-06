@@ -1,0 +1,33 @@
+#include <iostream>
+#include <string>
+#include <cmath>
+using namespace std;
+
+void ReadSidesOfIscocelTri(float &a , float &b)  
+{
+
+    cout << "Please enter Side 1: " << endl; cin >> a; 
+    cout << "Please enter Side 2: " << endl; cin >> b;
+    
+}
+
+float calAreaOfCircle(float a, float b) 
+{
+    const float pi = 3.14159265358979323846;
+    float Area = pi * ((pow(b, 2)) / 4) * ((2 * a - b) / (2 * a + b));  
+    return Area;
+}
+
+void PrintArea(float Area)
+{
+    cout << "The Area of the Circle is: " << Area; 
+}
+
+int main()
+{
+    float a, b; 
+    ReadSidesOfIscocelTri(a, b);   
+    PrintArea(calAreaOfCircle(a, b));  
+  
+    return 0;
+}
